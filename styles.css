@@ -14,10 +14,12 @@ body {
   box-shadow: 0 2px 8px rgba(16,42,67,0.04);
 }
 .logo {
-  font-family: 'Lato', Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #102A43;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 40px;
+  width: auto;
 }
 .main-nav a {
   margin: 0 1.2rem;

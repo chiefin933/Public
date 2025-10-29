@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="150" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo { font-family: Arial, sans-serif; }
+  </style>
+  <g>
+    <path fill="#C06C42" d="M60,75 c0-20,16-36,36-36 c20,0,36,16,36,36 c0,20-16,36-36,36 c-20,0-36-16-36-36 M78,75 c0,10,8,18,18,18 c10,0,18-8,18-18 c0-10-8-18-18-18 c-10,0-18,8-18,18" />
+    <text x="96" y="90" text-anchor="middle" fill="#102A43" class="logo" font-size="36px" font-weight="bold">B</text>
+    <text x="250" y="90" fill="#102A43" class="logo" font-size="48px" font-weight="bold">BookItNow</text>
+  </g>
+</svg>
