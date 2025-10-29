@@ -1,274 +1,51 @@
-<!doctype html><!-- Landing page for BookItNow - simple responsive homepage -->
-
-<html lang="en"><!DOCTYPE html>
-
-<head><html lang="en">
-
-  <meta charset="utf-8"><head>
-
-  <meta name="viewport" content="width=device-width,initial-scale=1">    <meta charset="utf-8">
-
-  <title>BookItNow — Demo</title>    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="styles.css">    <title>BookItNow — Fast online bookings</title>
-
-</head>    <meta name="description" content="BookItNow — quick and easy room and appointment booking.">
-
-<body>    <link rel="stylesheet" href="styles.css">
-
-  <header></head>
-
-    <div class="container"><body>
-
-      <h1>BookItNow</h1>    <!-- three.js background container -->
-
-    </div>    <div id="three-bg" aria-hidden="true"></div>
-
-  </header>    <header class="site-header">
-
-        <div class="container header-inner">
-
-  <main class="container">            <a class="brand" href="/">BookItNow</a>
-
-    <p>Welcome to a fresh BookItNow demo scaffold. The booking form and backend can be added when you're ready.</p>            <nav class="site-nav" aria-label="Primary">
-
-    <p>To run the demo backend (Express): <code>npm install</code> then <code>npm start</code>.</p>                <a href="#features">Features</a>
-
-  </main>                <a href="#how">How it works</a>
-
-                <a href="#contact">Contact</a>
-
-  <footer class="container">            </nav>
-
-    <p>&copy; 2025 BookItNow</p>        </div>
-
-  </footer>    </header>
-
-</body>
-
-</html>    <main>
-
-        <section class="hero" id="home">
-            <div class="container">
-                <h1>Book instantly. Anywhere. Anytime.</h1>
-                <p class="lead">Fast reservations for rooms, appointments, and events — with instant confirmation and easy management.</p>
-                <div class="hero-actions">
-                    <a class="btn primary" href="#contact">Get started</a>
-                            <button class="btn outline" id="demoBtn">See demo</button>
-                </div>
-            </div>
-        </section>
-
-                <!-- Booking form/demo modal -->
-                <div id="bookingModal" class="modal" aria-hidden="true">
-                    <div class="modal-content">
-                        <button class="modal-close" id="closeBooking">×</button>
-                        <h2>Book a Room</h2>
-                        <form id="bookingForm">
-                            <label>Full name
-                                <input type="text" name="name" id="name" required placeholder="Jane Doe">
-                            </label>
-                            <label>Email
-                                <input type="email" name="email" id="email" required placeholder="you@example.com">
-                            </label>
-                            <label>Date
-                                <input type="date" name="date" id="date" required>
-                            </label>
-                            <label>Time
-                                <input type="time" name="time" id="time" required>
-                            </label>
-                            <label>Duration (hours)
-                                <input type="number" name="duration" id="duration" min="1" max="8" value="1" required>
-                            </label>
-                            <div class="form-actions">
-                                <button type="submit" class="btn primary">Confirm booking</button>
-                                <button type="button" class="btn" id="demoFast">Quick demo booking</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Booking confirmation area / simple dashboard -->
-                <section class="bookings container" id="bookings">
-                    <h2>Your recent bookings (demo)</h2>
-                    <ul id="bookingList" class="booking-list"></ul>
-                </section>
-
-        <section class="features container" id="features">
-            <h2>Why choose BookItNow?</h2>
-            <div class="grid">
-                <article>
-                    <h3>Fast booking</h3>
-                    <p>Reserve in seconds with our streamlined flow.</p>
-                </article>
-                <article>
-                    <h3>Instant confirmation</h3>
-                    <p>Get immediate confirmation and calendar invites.</p>
-                </article>
-                <article>
-                    <h3>Manage easily</h3>
-                    <p>Edit or cancel bookings from a single dashboard.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="how container" id="how">
-            <h2>How it works</h2>
-            <ol>
-                <li>Choose a date and time</li>
-                <li>Confirm details</li>
-                <li>Receive instant confirmation</li>
-            </ol>
-        </section>
-
-        <section class="contact container" id="contact">
-            <h2>Contact</h2>
-            <p>Questions or feedback? Email us at <a href="mailto:hello@bookitnow.example">hello@bookitnow.example</a>.</p>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2025 BookItNow — All rights reserved.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookItNow - Elegant Booking Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">BookItNow</div>
+    <nav class="main-nav">
+      <a href="#">Stays</a>
+      <a href="#">Flights</a>
+      <a href="#">Car Rentals</a>
+      <a href="#">Experiences</a>
+    </nav>
+    <div class="header-actions">
+      <button class="list-property">List Your Property</button>
+      <button class="sign-in">Sign In</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Find your next escape</h1>
+      <form class="search-form" id="searchForm">
+        <input type="text" id="destination" placeholder="Destination" required>
+        <div class="date-picker-group">
+          <input type="text" id="checkin" placeholder="Check-in" readonly required>
+          <input type="text" id="checkout" placeholder="Check-out" readonly required>
         </div>
-    </footer>
-
-        <!-- three.js (small animated particle background) -->
-        <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-        <script>
-            (function(){
-                // Simple three.js background: animated points
-                if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ return }
-                const container = document.getElementById('three-bg');
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-                camera.position.z = 200;
-                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-                renderer.setPixelRatio(window.devicePixelRatio || 1);
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                container.appendChild(renderer.domElement);
-
-                const particles = new THREE.BufferGeometry();
-                const count = Math.min(800, Math.floor((window.innerWidth * window.innerHeight) / 1500));
-                const positions = new Float32Array(count * 3);
-                for(let i=0;i<count;i++){
-                    positions[i*3] = (Math.random()-0.5) * 800;
-                    positions[i*3+1] = (Math.random()-0.5) * 400;
-                    positions[i*3+2] = (Math.random()-0.5) * 800;
-                }
-                particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
-                const mat = new THREE.PointsMaterial({ color: 0x1a73e8, size: 2, transparent: true, opacity: 0.7 });
-                const points = new THREE.Points(particles, mat);
-                scene.add(points);
-
-                function onResize(){
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                }
-                window.addEventListener('resize', onResize);
-
-                let t=0;
-                (function animate(){
-                    t += 0.005;
-                    points.rotation.y = t * 0.5;
-                    points.rotation.x = Math.sin(t) * 0.1;
-                    renderer.render(scene, camera);
-                    requestAnimationFrame(animate);
-                })();
-            })();
-        </script>
-
-        <script>
-                        // Booking demo & mock implementation (updated: tries backend, falls back to localStorage)
-            (function(){
-                const demoBtn = document.getElementById('demoBtn');
-                const modal = document.getElementById('bookingModal');
-                const closeBtn = document.getElementById('closeBooking');
-                const form = document.getElementById('bookingForm');
-                const demoFast = document.getElementById('demoFast');
-                const bookingList = document.getElementById('bookingList');
-
-                function openModal(){ modal.setAttribute('aria-hidden','false'); modal.classList.add('open'); }
-                function closeModal(){ modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); }
-
-                                async function loadBookings(){
-                                        bookingList.innerHTML = '';
-                                        try{
-                                            const res = await fetch('/api/bookings');
-                                            if(!res.ok) throw new Error('server');
-                                            const items = await res.json();
-                                            if(!items || items.length===0){ bookingList.innerHTML = '<li class="muted">No bookings yet (demo)</li>'; return }
-                                            items.slice().reverse().forEach(b => {
-                                                const li = document.createElement('li');
-                                                li.innerHTML = `<strong>${escapeHtml(b.name)}</strong> — ${b.date} ${b.time} (${b.duration}h)`;
-                                                bookingList.appendChild(li);
-                                            });
-                                            return;
-                                        }catch(e){
-                                            // fallback to localStorage
-                                            const items = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
-                                            if(items.length===0){ bookingList.innerHTML = '<li class="muted">No bookings yet (demo)</li>'; return }
-                                            items.slice().reverse().forEach(b => {
-                                                const li = document.createElement('li');
-                                                li.innerHTML = `<strong>${escapeHtml(b.name)}</strong> — ${b.date} ${b.time} (${b.duration}h)`;
-                                                bookingList.appendChild(li);
-                                            });
-                                            return;
-                                        }
-                                }
-
-                                async function saveBooking(b){
-                                        // try server first
-                                        try{
-                                            const res = await fetch('/api/bookings', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});
-                                            if(!res.ok) throw new Error('server');
-                                            // after success, reload from server
-                                            await loadBookings();
-                                            return;
-                                        }catch(e){
-                                            // fallback to localStorage
-                                            const arr = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
-                                            arr.push(b);
-                                            localStorage.setItem('bookitnow_bookings', JSON.stringify(arr));
-                                            loadBookings();
-                                        }
-                                }
-
-                function escapeHtml(s){ return (s+'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;" })[c]) }
-
-                demoBtn?.addEventListener('click', ()=> openModal());
-                closeBtn?.addEventListener('click', ()=> closeModal());
-
-                form?.addEventListener('submit', function(e){
-                    e.preventDefault();
-                    const b = {
-                        name: form.name.value.trim(),
-                        email: form.email.value.trim(),
-                        date: form.date.value,
-                        time: form.time.value,
-                        duration: form.duration.value
-                    };
-                    // very small validation
-                    if(!b.name || !b.email || !b.date || !b.time){ alert('Please fill all required fields'); return }
-                    saveBooking(b);
-                    closeModal();
-                    alert('Booking confirmed (demo). Check the Recent bookings list.');
-                    form.reset();
-                });
-
-                demoFast?.addEventListener('click', function(){
-                    const now = new Date();
-                    const date = now.toISOString().slice(0,10);
-                    const time = now.toTimeString().slice(0,5);
-                    saveBooking({name:'Demo User',email:'demo@example.com',date:date,time:time,duration:1});
-                    closeModal();
-                    alert('Quick demo booking created.');
-                });
-
-                // initialize
-                loadBookings();
-            })();
-    </script>
+        <div class="guests-group">
+          <button type="button" class="guests-minus">-</button>
+          <input type="text" id="guests" value="2" readonly>
+          <button type="button" class="guests-plus">+</button>
+        </div>
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+      <div id="calendar-modal" class="calendar-modal hidden"></div>
+    </section>
+    <section class="featured-escapes">
+      <h2>Featured Escapes</h2>
+      <div class="card-list">
+        <!-- Cards will go here -->
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
