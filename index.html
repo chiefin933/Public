@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- three.js background container -->
+    <div id="three-bg" aria-hidden="true"></div>
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="/">BookItNow</a>
@@ -106,8 +108,54 @@
         </div>
     </footer>
 
-    <script>
-            // Booking demo & mock implementation
+        <!-- three.js (small animated particle background) -->
+        <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+        <script>
+            (function(){
+                // Simple three.js background: animated points
+                if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ return }
+                const container = document.getElementById('three-bg');
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+                camera.position.z = 200;
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setPixelRatio(window.devicePixelRatio || 1);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                container.appendChild(renderer.domElement);
+
+                const particles = new THREE.BufferGeometry();
+                const count = Math.min(800, Math.floor((window.innerWidth * window.innerHeight) / 1500));
+                const positions = new Float32Array(count * 3);
+                for(let i=0;i<count;i++){
+                    positions[i*3] = (Math.random()-0.5) * 800;
+                    positions[i*3+1] = (Math.random()-0.5) * 400;
+                    positions[i*3+2] = (Math.random()-0.5) * 800;
+                }
+                particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+                const mat = new THREE.PointsMaterial({ color: 0x1a73e8, size: 2, transparent: true, opacity: 0.7 });
+                const points = new THREE.Points(particles, mat);
+                scene.add(points);
+
+                function onResize(){
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                }
+                window.addEventListener('resize', onResize);
+
+                let t=0;
+                (function animate(){
+                    t += 0.005;
+                    points.rotation.y = t * 0.5;
+                    points.rotation.x = Math.sin(t) * 0.1;
+                    renderer.render(scene, camera);
+                    requestAnimationFrame(animate);
+                })();
+            })();
+        </script>
+
+        <script>
+                        // Booking demo & mock implementation (updated: tries backend, falls back to localStorage)
             (function(){
                 const demoBtn = document.getElementById('demoBtn');
                 const modal = document.getElementById('bookingModal');
@@ -119,23 +167,48 @@
                 function openModal(){ modal.setAttribute('aria-hidden','false'); modal.classList.add('open'); }
                 function closeModal(){ modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); }
 
-                function loadBookings(){
-                    const items = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
-                    bookingList.innerHTML = '';
-                    if(items.length===0){ bookingList.innerHTML = '<li class="muted">No bookings yet (demo)</li>'; return }
-                    items.slice().reverse().forEach(b => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<strong>${escapeHtml(b.name)}</strong> — ${b.date} ${b.time} (${b.duration}h)`;
-                        bookingList.appendChild(li);
-                    });
-                }
+                                async function loadBookings(){
+                                        bookingList.innerHTML = '';
+                                        try{
+                                            const res = await fetch('/api/bookings');
+                                            if(!res.ok) throw new Error('server');
+                                            const items = await res.json();
+                                            if(!items || items.length===0){ bookingList.innerHTML = '<li class="muted">No bookings yet (demo)</li>'; return }
+                                            items.slice().reverse().forEach(b => {
+                                                const li = document.createElement('li');
+                                                li.innerHTML = `<strong>${escapeHtml(b.name)}</strong> — ${b.date} ${b.time} (${b.duration}h)`;
+                                                bookingList.appendChild(li);
+                                            });
+                                            return;
+                                        }catch(e){
+                                            // fallback to localStorage
+                                            const items = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
+                                            if(items.length===0){ bookingList.innerHTML = '<li class="muted">No bookings yet (demo)</li>'; return }
+                                            items.slice().reverse().forEach(b => {
+                                                const li = document.createElement('li');
+                                                li.innerHTML = `<strong>${escapeHtml(b.name)}</strong> — ${b.date} ${b.time} (${b.duration}h)`;
+                                                bookingList.appendChild(li);
+                                            });
+                                            return;
+                                        }
+                                }
 
-                function saveBooking(b){
-                    const arr = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
-                    arr.push(b);
-                    localStorage.setItem('bookitnow_bookings', JSON.stringify(arr));
-                    loadBookings();
-                }
+                                async function saveBooking(b){
+                                        // try server first
+                                        try{
+                                            const res = await fetch('/api/bookings', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});
+                                            if(!res.ok) throw new Error('server');
+                                            // after success, reload from server
+                                            await loadBookings();
+                                            return;
+                                        }catch(e){
+                                            // fallback to localStorage
+                                            const arr = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
+                                            arr.push(b);
+                                            localStorage.setItem('bookitnow_bookings', JSON.stringify(arr));
+                                            loadBookings();
+                                        }
+                                }
 
                 function escapeHtml(s){ return (s+'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;" })[c]) }
 

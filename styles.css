@@ -46,3 +46,12 @@ form input{display:block;width:100%;padding:.5rem;border:1px solid #e6e6ef;borde
 .booking-list li{padding:.6rem;border-radius:8px;background:var(--card);margin-bottom:.5rem;border:1px solid rgba(0,0,0,0.03)}
 .booking-list .muted{color:var(--muted)}
 
+/* three.js background container */
+#three-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+/* ensure content stacks above the canvas */
+header.site-header, main, .site-footer, .container{position:relative;z-index:1}
+
+@media (prefers-reduced-motion: reduce){
+  #three-bg{display:none}
+}
+
