@@ -27,10 +27,45 @@
                 <p class="lead">Fast reservations for rooms, appointments, and events — with instant confirmation and easy management.</p>
                 <div class="hero-actions">
                     <a class="btn primary" href="#contact">Get started</a>
-                    <button class="btn outline" id="demoBtn">See demo</button>
+                            <button class="btn outline" id="demoBtn">See demo</button>
                 </div>
             </div>
         </section>
+
+                <!-- Booking form/demo modal -->
+                <div id="bookingModal" class="modal" aria-hidden="true">
+                    <div class="modal-content">
+                        <button class="modal-close" id="closeBooking">×</button>
+                        <h2>Book a Room</h2>
+                        <form id="bookingForm">
+                            <label>Full name
+                                <input type="text" name="name" id="name" required placeholder="Jane Doe">
+                            </label>
+                            <label>Email
+                                <input type="email" name="email" id="email" required placeholder="you@example.com">
+                            </label>
+                            <label>Date
+                                <input type="date" name="date" id="date" required>
+                            </label>
+                            <label>Time
+                                <input type="time" name="time" id="time" required>
+                            </label>
+                            <label>Duration (hours)
+                                <input type="number" name="duration" id="duration" min="1" max="8" value="1" required>
+                            </label>
+                            <div class="form-actions">
+                                <button type="submit" class="btn primary">Confirm booking</button>
+                                <button type="button" class="btn" id="demoFast">Quick demo booking</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Booking confirmation area / simple dashboard -->
+                <section class="bookings container" id="bookings">
+                    <h2>Your recent bookings (demo)</h2>
+                    <ul id="bookingList" class="booking-list"></ul>
+                </section>
 
         <section class="features container" id="features">
             <h2>Why choose BookItNow?</h2>
@@ -72,10 +107,70 @@
     </footer>
 
     <script>
-        // Small demo action for the "See demo" button
-        document.getElementById('demoBtn')?.addEventListener('click', function(){
-            alert('Demo: imagine a smooth booking flow here!');
-        });
+            // Booking demo & mock implementation
+            (function(){
+                const demoBtn = document.getElementById('demoBtn');
+                const modal = document.getElementById('bookingModal');
+                const closeBtn = document.getElementById('closeBooking');
+                const form = document.getElementById('bookingForm');
+                const demoFast = document.getElementById('demoFast');
+                const bookingList = document.getElementById('bookingList');
+
+                function openModal(){ modal.setAttribute('aria-hidden','false'); modal.classList.add('open'); }
+                function closeModal(){ modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); }
+
+                function loadBookings(){
+                    const items = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
+                    bookingList.innerHTML = '';
+                    if(items.length===0){ bookingList.innerHTML = '<li class="muted">No bookings yet (demo)</li>'; return }
+                    items.slice().reverse().forEach(b => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${escapeHtml(b.name)}</strong> — ${b.date} ${b.time} (${b.duration}h)`;
+                        bookingList.appendChild(li);
+                    });
+                }
+
+                function saveBooking(b){
+                    const arr = JSON.parse(localStorage.getItem('bookitnow_bookings')||'[]');
+                    arr.push(b);
+                    localStorage.setItem('bookitnow_bookings', JSON.stringify(arr));
+                    loadBookings();
+                }
+
+                function escapeHtml(s){ return (s+'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;" })[c]) }
+
+                demoBtn?.addEventListener('click', ()=> openModal());
+                closeBtn?.addEventListener('click', ()=> closeModal());
+
+                form?.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    const b = {
+                        name: form.name.value.trim(),
+                        email: form.email.value.trim(),
+                        date: form.date.value,
+                        time: form.time.value,
+                        duration: form.duration.value
+                    };
+                    // very small validation
+                    if(!b.name || !b.email || !b.date || !b.time){ alert('Please fill all required fields'); return }
+                    saveBooking(b);
+                    closeModal();
+                    alert('Booking confirmed (demo). Check the Recent bookings list.');
+                    form.reset();
+                });
+
+                demoFast?.addEventListener('click', function(){
+                    const now = new Date();
+                    const date = now.toISOString().slice(0,10);
+                    const time = now.toTimeString().slice(0,5);
+                    saveBooking({name:'Demo User',email:'demo@example.com',date:date,time:time,duration:1});
+                    closeModal();
+                    alert('Quick demo booking created.');
+                });
+
+                // initialize
+                loadBookings();
+            })();
     </script>
 </body>
 </html>
