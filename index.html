@@ -1,0 +1,81 @@
+<!-- Landing page for BookItNow - simple responsive homepage -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BookItNow — Fast online bookings</title>
+    <meta name="description" content="BookItNow — quick and easy room and appointment booking.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/">BookItNow</a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#features">Features</a>
+                <a href="#how">How it works</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Book instantly. Anywhere. Anytime.</h1>
+                <p class="lead">Fast reservations for rooms, appointments, and events — with instant confirmation and easy management.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#contact">Get started</a>
+                    <button class="btn outline" id="demoBtn">See demo</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="features container" id="features">
+            <h2>Why choose BookItNow?</h2>
+            <div class="grid">
+                <article>
+                    <h3>Fast booking</h3>
+                    <p>Reserve in seconds with our streamlined flow.</p>
+                </article>
+                <article>
+                    <h3>Instant confirmation</h3>
+                    <p>Get immediate confirmation and calendar invites.</p>
+                </article>
+                <article>
+                    <h3>Manage easily</h3>
+                    <p>Edit or cancel bookings from a single dashboard.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="how container" id="how">
+            <h2>How it works</h2>
+            <ol>
+                <li>Choose a date and time</li>
+                <li>Confirm details</li>
+                <li>Receive instant confirmation</li>
+            </ol>
+        </section>
+
+        <section class="contact container" id="contact">
+            <h2>Contact</h2>
+            <p>Questions or feedback? Email us at <a href="mailto:hello@bookitnow.example">hello@bookitnow.example</a>.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 BookItNow — All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Small demo action for the "See demo" button
+        document.getElementById('demoBtn')?.addEventListener('click', function(){
+            alert('Demo: imagine a smooth booking flow here!');
+        });
+    </script>
+</body>
+</html>
