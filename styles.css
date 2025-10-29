@@ -76,6 +76,15 @@ body {
   min-width: 120px;
   margin-right: 0.5rem;
 }
+
+/* screen-reader only */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
 .date-picker-group {
   display: flex;
   gap: 0.5rem;
@@ -130,6 +139,13 @@ body {
 .calendar-modal.hidden {
   display: none;
 }
+
+/* Calendar day states */
+.calendar-day { background:#FAF9F6;border:none;border-radius:8px;padding:0.5rem 0;cursor:pointer; }
+.calendar-day.day--selected { background: #C06C42; color: #fff; font-weight:700; }
+.calendar-day.day--inrange { background:#EED6CB; }
+
+.card img { height: 200px; }
 .featured-escapes {
   padding: 2rem 0 4rem 0;
   max-width: 1200px;

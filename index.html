@@ -22,27 +22,60 @@
     </div>
   </header>
   <main>
-    <section class="hero">
-      <h1>Find your next escape</h1>
-      <form class="search-form" id="searchForm">
-        <input type="text" id="destination" placeholder="Destination" required>
-        <div class="date-picker-group">
-          <input type="text" id="checkin" placeholder="Check-in" readonly required>
-          <input type="text" id="checkout" placeholder="Check-out" readonly required>
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">Find your next escape</h1>
+      <form class="search-form" id="searchForm" role="search" aria-label="Search stays">
+        <div class="field">
+          <label for="destination" class="sr-only">Destination</label>
+          <input type="text" id="destination" name="destination" placeholder="Destination" required aria-required="true">
         </div>
-        <div class="guests-group">
-          <button type="button" class="guests-minus">-</button>
-          <input type="text" id="guests" value="2" readonly>
-          <button type="button" class="guests-plus">+</button>
+
+        <div class="field date-picker-group" aria-hidden="false">
+          <label for="checkin" class="sr-only">Check-in date</label>
+          <input type="text" id="checkin" name="checkin" placeholder="Check-in" readonly required aria-required="true">
+          <label for="checkout" class="sr-only">Check-out date</label>
+          <input type="text" id="checkout" name="checkout" placeholder="Check-out" readonly required aria-required="true">
         </div>
-        <button type="submit" class="search-btn">Search</button>
+
+        <div class="field guests-group" aria-label="Guests and rooms">
+          <label class="sr-only" for="guests">Guests</label>
+          <button type="button" class="guests-minus" aria-label="Decrease guests">-</button>
+          <input type="text" id="guests" name="guests" value="2" readonly aria-readonly="true">
+          <button type="button" class="guests-plus" aria-label="Increase guests">+</button>
+        </div>
+
+        <button type="submit" class="search-btn" aria-label="Search properties">Search</button>
       </form>
-      <div id="calendar-modal" class="calendar-modal hidden"></div>
+
+      <div id="calendar-modal" class="calendar-modal hidden" role="dialog" aria-modal="true" aria-label="Date picker"></div>
     </section>
-    <section class="featured-escapes">
-      <h2>Featured Escapes</h2>
+
+    <section class="featured-escapes" aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Featured Escapes</h2>
       <div class="card-list">
-        <!-- Cards will go here -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Oceanfront resort at sunset">
+          <div class="card-content">
+            <div class="card-title">Oceanfront Resort</div>
+            <div class="card-details">Maldives · 5 nights · From $899</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Charming mountain lodge">
+          <div class="card-content">
+            <div class="card-title">Mountain Lodge Retreat</div>
+            <div class="card-details">Swiss Alps · Cozy cabins · From $299</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=1200&q=80" alt="Stylish city apartment skyline">
+          <div class="card-content">
+            <div class="card-title">City Skyline Apartment</div>
+            <div class="card-details">New York · Central location · From $199</div>
+          </div>
+        </article>
       </div>
     </section>
   </main>
