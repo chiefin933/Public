@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stays - BookItNow</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/logo.svg" alt="BookItNow" height="40">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="stays.html" class="active">Stays</a>
+      <a href="flights.html">Flights</a>
+      <a href="car-rentals.html">Car Rentals</a>
+      <a href="experiences.html">Experiences</a>
+    </nav>
+    <div class="header-actions">
+      <button class="list-property">List Your Property</button>
+      <button class="sign-in">Sign In</button>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero stays-hero">
+      <h1>Find your perfect stay</h1>
+      <form class="search-form" id="staysSearchForm" role="search" aria-label="Search accommodations">
+        <div class="field">
+          <label for="destination" class="sr-only">Where are you going?</label>
+          <input type="text" id="destination" name="destination" placeholder="Where are you going?" required aria-required="true">
+        </div>
+
+        <div class="field date-picker-group">
+          <label for="checkin" class="sr-only">Check-in date</label>
+          <input type="text" id="checkin" name="checkin" placeholder="Check-in" readonly required>
+          <label for="checkout" class="sr-only">Check-out date</label>
+          <input type="text" id="checkout" name="checkout" placeholder="Check-out" readonly required>
+        </div>
+
+        <div class="field guests-group">
+          <label class="sr-only" for="rooms">Rooms and Guests</label>
+          <select id="rooms" name="rooms">
+            <option value="1">1 Room</option>
+            <option value="2">2 Rooms</option>
+            <option value="3">3 Rooms</option>
+          </select>
+          <select id="guests" name="guests">
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+          </select>
+        </div>
+
+        <button type="submit" class="search-btn">Search Stays</button>
+      </form>
+    </section>
+
+    <section class="featured-section">
+      <h2>Popular Destinations</h2>
+      <div class="card-list">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" alt="Luxury beach resort">
+          <div class="card-content">
+            <div class="card-title">Luxury Beach Resorts</div>
+            <div class="card-details">From $299/night · 4.8★ (2.5k reviews)</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Boutique city hotel">
+          <div class="card-content">
+            <div class="card-title">Boutique City Hotels</div>
+            <div class="card-details">From $199/night · 4.7★ (1.8k reviews)</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" alt="Mountain cabin">
+          <div class="card-content">
+            <div class="card-title">Mountain Retreats</div>
+            <div class="card-details">From $159/night · 4.9★ (3.2k reviews)</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About BookItNow</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How it Works</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Cancellation Options</a></li>
+          <li><a href="#">Safety Information</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BookItNow. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
