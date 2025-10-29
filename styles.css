@@ -1,0 +1,64 @@
+:root{--bg:#f7f7fb;--text:#222;--accent:#0066ff}/* Basic responsive styles for BookItNow */
+
+html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}:root{
+
+.container{max-width:960px;margin:0 auto;padding:1rem}  --bg:#f7f7fb;
+
+header{background:#fff;border-bottom:1px solid #eee}  --card:#ffffff;
+
+header h1{margin:0;padding:1rem 0}  --accent:#0066ff;
+
+main{padding:2rem 0}  --muted:#6b6f76;
+
+footer{padding:1rem 0;color:#666}  --max-width:1100px;
+
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:var(--bg); color:#222}
+.container{max-width:var(--max-width);margin:0 auto;padding:1.25rem}
+.site-header{background:linear-gradient(90deg,rgba(0,0,0,0.02),transparent);border-bottom:1px solid rgba(0,0,0,0.04)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
+.brand{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.125rem}
+.site-nav a{margin-left:1rem;color:var(--muted);text-decoration:none}
+.site-nav a:hover{color:#111}
+.hero{padding:4rem 0;background:linear-gradient(180deg,rgba(0,102,255,0.04),transparent)}
+.hero h1{font-size:2rem;margin:0 0 .5rem}
+.lead{color:var(--muted);margin:0 0 1.25rem}
+.hero-actions{display:flex;gap:.75rem}
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;border:1px solid transparent;background:var(--card);cursor:pointer;text-decoration:none;color:var(--accent)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.outline{background:transparent;border-color:var(--accent);color:var(--accent)}
+.features{padding:2rem 0}
+.features .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.features article{background:var(--card);padding:1rem;border-radius:8px;box-shadow:0 1px 4px rgba(16,24,40,0.04)}
+.how, .contact{padding:1.5rem 0}
+.site-footer{padding:1rem 0;border-top:1px solid rgba(0,0,0,0.04);background:transparent}
+@media (max-width:800px){
+  .features .grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.5rem}
+  .header-inner{padding:0.5rem 0}
+  .site-nav{display:none}
+}
+
+/* Modal and form styles */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:1rem;visibility:hidden;opacity:0;transition:opacity .18s ease,visibility .18s}
+.modal.open{visibility:visible;opacity:1}
+.modal::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.35)}
+.modal-content{position:relative;z-index:2;background:var(--card);padding:1.25rem;border-radius:12px;max-width:520px;width:100%;box-shadow:0 6px 24px rgba(16,24,40,0.08)}
+.modal-close{position:absolute;right:10px;top:8px;border:0;background:transparent;font-size:1.25rem;cursor:pointer}
+form label{display:block;margin-bottom:.6rem;color:#333}
+form input{display:block;width:100%;padding:.5rem;border:1px solid #e6e6ef;border-radius:8px;margin-top:.25rem}
+.form-actions{display:flex;gap:.5rem;margin-top:.75rem}
+.booking-list{list-style:none;padding:0;margin:0}
+.booking-list li{padding:.6rem;border-radius:8px;background:var(--card);margin-bottom:.5rem;border:1px solid rgba(0,0,0,0.03)}
+.booking-list .muted{color:var(--muted)}
+
+/* three.js background container */
+#three-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+/* ensure content stacks above the canvas */
+header.site-header, main, .site-footer, .container{position:relative;z-index:1}
+
+@media (prefers-reduced-motion: reduce){
+  #three-bg{display:none}
+}
+
