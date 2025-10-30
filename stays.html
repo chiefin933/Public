@@ -8,23 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/bookit-logo.png" alt="BookItNow" class="logo-img">
-      </a>
-    </div>
-    <nav class="main-nav">
-      <a href="stays.html" class="active">Stays</a>
-      <a href="flights.html">Flights</a>
-      <a href="car-rentals.html">Car Rentals</a>
-      <a href="experiences.html">Experiences</a>
-    </nav>
-    <div class="header-actions">
-      <button class="list-property">List Your Property</button>
-      <button class="sign-in">Sign In</button>
-    </div>
-  </header>
+  <div id="site-header"></div>
   
   <main>
     <section class="hero stays-hero">
@@ -62,61 +46,34 @@
     </section>
 
     <section class="featured-section">
-      <h2>Popular Destinations</h2>
+      <h2>Available Properties</h2>
+      <div id="propertyFilters" class="filters">
+        <select id="propertyType">
+          <option value="">All Types</option>
+          <option value="HOUSE">Houses</option>
+          <option value="APARTMENT">Apartments</option>
+          <option value="VILLA">Villas</option>
+          <option value="HOTEL_ROOM">Hotel Rooms</option>
+        </select>
+        <div class="price-range">
+          <input type="number" id="minPrice" placeholder="Min Price">
+          <input type="number" id="maxPrice" placeholder="Max Price">
+        </div>
+      </div>
       <div class="card-list">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" alt="Luxury beach resort">
-          <div class="card-content">
-            <div class="card-title">Luxury Beach Resorts</div>
-            <div class="card-details">From $299/night · 4.8★ (2.5k reviews)</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Boutique city hotel">
-          <div class="card-content">
-            <div class="card-title">Boutique City Hotels</div>
-            <div class="card-details">From $199/night · 4.7★ (1.8k reviews)</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e" alt="Mountain cabin">
-          <div class="card-content">
-            <div class="card-title">Mountain Retreats</div>
-            <div class="card-details">From $159/night · 4.9★ (3.2k reviews)</div>
-          </div>
-        </article>
+        <div id="propertyList" class="property-grid">
+          <!-- Properties will be loaded here dynamically -->
+          <div class="loading">Loading properties...</div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About BookItNow</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">How it Works</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Cancellation Options</a></li>
-          <li><a href="#">Safety Information</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 BookItNow. All rights reserved.</p>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
-  <script src="script.js"></script>
+  <script src="include-fragments.js"></script>
+    <script src="js/api.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

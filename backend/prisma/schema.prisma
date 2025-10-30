@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          UserRole  @default(CUSTOMER)
+  properties    Property[]
+  bookings      Booking[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum UserRole {
+  ADMIN
+  OWNER
+  CUSTOMER
+}
+
+model Property {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  location    String
+  type        PropertyType
+  amenities   String[]
+  images      String[]
+  ownerId     String
+  owner       User      @relation(fields: [ownerId], references: [id])
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum PropertyType {
+  HOUSE
+  APARTMENT
+  VILLA
+  HOTEL_ROOM
+}
+
+model Flight {
+  id              String    @id @default(cuid())
+  flightNumber    String
+  airline         String
+  departureCity   String
+  arrivalCity     String
+  departureTime   DateTime
+  arrivalTime     DateTime
+  price           Float
+  type           FlightType
+  seatsAvailable  Int
+  bookings        Booking[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+enum FlightType {
+  ECONOMY
+  BUSINESS
+  FIRST_CLASS
+}
+
+model Vehicle {
+  id          String      @id @default(cuid())
+  make        String
+  model       String
+  year        Int
+  type        VehicleType
+  price       Float
+  location    String
+  available   Boolean     @default(true)
+  images      String[]
+  bookings    Booking[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum VehicleType {
+  ECONOMY
+  SUV
+  LUXURY
+  VAN
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  status      BookingStatus @default(PENDING)
+  totalPrice  Float
+  propertyId  String?
+  property    Property?     @relation(fields: [propertyId], references: [id])
+  flightId    String?
+  flight      Flight?       @relation(fields: [flightId], references: [id])
+  vehicleId   String?
+  vehicle     Vehicle?      @relation(fields: [vehicleId], references: [id])
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}

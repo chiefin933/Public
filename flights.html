@@ -8,23 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/bookit-logo.png" alt="BookItNow" class="logo-img">
-      </a>
-    </div>
-    <nav class="main-nav">
-      <a href="stays.html">Stays</a>
-      <a href="flights.html" class="active">Flights</a>
-      <a href="car-rentals.html">Car Rentals</a>
-      <a href="experiences.html">Experiences</a>
-    </nav>
-    <div class="header-actions">
-      <button class="list-property">List Your Property</button>
-      <button class="sign-in">Sign In</button>
-    </div>
-  </header>
+  <div id="site-header"></div>
   
   <main>
     <section class="hero flights-hero">
@@ -69,61 +53,33 @@
     </section>
 
     <section class="featured-section">
-      <h2>Popular Flight Routes</h2>
+      <h2>Available Flights</h2>
+      <div id="flightFilters" class="filters">
+        <select id="flightType">
+          <option value="">All Classes</option>
+          <option value="ECONOMY">Economy</option>
+          <option value="BUSINESS">Business</option>
+          <option value="FIRST_CLASS">First Class</option>
+        </select>
+        <div class="price-range">
+          <input type="number" id="minPrice" placeholder="Min Price">
+          <input type="number" id="maxPrice" placeholder="Max Price">
+        </div>
+      </div>
       <div class="card-list">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="New York to London route">
-          <div class="card-content">
-            <div class="card-title">New York - London</div>
-            <div class="card-details">From $399 · Daily flights</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34" alt="Los Angeles to Tokyo route">
-          <div class="card-content">
-            <div class="card-title">LA - Tokyo</div>
-            <div class="card-details">From $699 · Best deals</div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c" alt="Dubai to Singapore route">
-          <div class="card-content">
-            <div class="card-title">Dubai - Singapore</div>
-            <div class="card-details">From $549 · Premium service</div>
-          </div>
-        </article>
+        <div id="flightList" class="flight-grid">
+          <!-- Flights will be loaded here dynamically -->
+          <div class="loading">Loading flights...</div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About BookItNow</h3>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">How it Works</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Cancellation Options</a></li>
-          <li><a href="#">Safety Information</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 BookItNow. All rights reserved.</p>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
-  <script src="script.js"></script>
+  <script src="include-fragments.js"></script>
+  <script src="js/api.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+  <script src="script.js" type="module"></script>
 </body>
 </html>
