@@ -1,0 +1,63 @@
+{
+  "version": "5",
+  "dialect": "postgresql",
+  "id": "20251030000001_init",
+  "prevId": null,
+  "steps": [
+    {
+      "tag": "CreateTable",
+      "table": "User"
+    },
+    {
+      "tag": "SetPrimaryKey",
+      "table": "User",
+      "columns": ["id"]
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "id",
+      "type": "Int",
+      "isRequired": true,
+      "isUnique": false,
+      "isId": true,
+      "isUpdatedAt": false,
+      "default": "autoincrement()",
+      "documentation": ""
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "email",
+      "type": "String",
+      "isRequired": true,
+      "isUnique": true,
+      "isId": false,
+      "isUpdatedAt": false,
+      "documentation": ""
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "name",
+      "type": "String",
+      "isRequired": false,
+      "isUnique": false,
+      "isId": false,
+      "isUpdatedAt": false,
+      "documentation": ""
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "createdAt",
+      "type": "DateTime",
+      "isRequired": true,
+      "isUnique": false,
+      "isId": false,
+      "isUpdatedAt": false,
+      "default": "now()",
+      "documentation": ""
+    }
+  ]
+}

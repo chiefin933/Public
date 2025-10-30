@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flights - BookItNow</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="site-header"></div>
+  
+  <main>
+    <section class="hero flights-hero">
+      <h1>Find your next flight</h1>
+      <form class="search-form" id="flightSearchForm" role="search" aria-label="Search flights">
+        <div class="field-group">
+          <div class="field">
+            <label for="origin" class="sr-only">From</label>
+            <input type="text" id="origin" name="origin" placeholder="Flying from" required aria-required="true">
+          </div>
+          <div class="field">
+            <label for="destination" class="sr-only">To</label>
+            <input type="text" id="destination" name="destination" placeholder="Flying to" required aria-required="true">
+          </div>
+        </div>
+
+        <div class="field date-picker-group">
+          <label for="departure" class="sr-only">Departure date</label>
+          <input type="text" id="departure" name="departure" placeholder="Departure" readonly required>
+          <label for="return" class="sr-only">Return date</label>
+          <input type="text" id="return" name="return" placeholder="Return" readonly required>
+        </div>
+
+        <div class="field passengers-group">
+          <label class="sr-only" for="passengers">Passengers</label>
+          <select id="passengers" name="passengers">
+            <option value="1">1 Passenger</option>
+            <option value="2">2 Passengers</option>
+            <option value="3">3 Passengers</option>
+            <option value="4">4 Passengers</option>
+          </select>
+          <select id="class" name="class">
+            <option value="economy">Economy</option>
+            <option value="premium">Premium Economy</option>
+            <option value="business">Business</option>
+            <option value="first">First Class</option>
+          </select>
+        </div>
+
+        <button type="submit" class="search-btn">Search Flights</button>
+      </form>
+    </section>
+
+    <section class="featured-section">
+      <h2>Available Flights</h2>
+      <div id="flightFilters" class="filters">
+        <select id="flightType">
+          <option value="">All Classes</option>
+          <option value="ECONOMY">Economy</option>
+          <option value="BUSINESS">Business</option>
+          <option value="FIRST_CLASS">First Class</option>
+        </select>
+        <div class="price-range">
+          <input type="number" id="minPrice" placeholder="Min Price">
+          <input type="number" id="maxPrice" placeholder="Max Price">
+        </div>
+      </div>
+      <div class="card-list">
+        <div id="flightList" class="flight-grid">
+          <!-- Flights will be loaded here dynamically -->
+          <div class="loading">Loading flights...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="include-fragments.js"></script>
+  <script src="js/api.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+  <script src="script.js" type="module"></script>
+</body>
+</html>

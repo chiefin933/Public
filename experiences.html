@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiences - BookItNow</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/logo.svg" alt="BookItNow" class="logo-img">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <a href="stays.html">Stays</a>
+      <a href="flights.html">Flights</a>
+      <a href="car-rentals.html">Car Rentals</a>
+      <a href="experiences.html" class="active">Experiences</a>
+    </nav>
+    <div class="header-actions">
+      <button class="list-property auth-required">List Your Property</button>
+      <button class="sign-in auth-hidden">Sign In</button>
+      <button class="sign-out auth-required" style="border: 1.5px solid #E12D39; color: #E12D39;">Sign Out</button>
+    </div>
+  </header>
+
+  <!-- Sign In Modal -->
+  <div id="signInModal" class="auth-modal hidden">
+    <div class="auth-modal-content">
+      <button class="close-modal">&times;</button>
+      <h2>Sign In</h2>
+      <form id="signInForm" class="auth-form">
+        <div class="form-group">
+          <label for="signInEmail">Email</label>
+          <input type="email" id="signInEmail" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="signInPassword">Password</label>
+          <input type="password" id="signInPassword" name="password" required>
+        </div>
+        <button type="submit" class="auth-submit">Sign In</button>
+      </form>
+      <p class="auth-switch">Don't have an account? <button type="button" class="switch-to-signup">Sign Up</button></p>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signUpModal" class="auth-modal hidden">
+    <div class="auth-modal-content">
+      <button class="close-modal">&times;</button>
+      <h2>Create Account</h2>
+      <form id="signUpForm" class="auth-form">
+        <div class="form-group">
+          <label for="signUpName">Full Name</label>
+          <input type="text" id="signUpName" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="signUpEmail">Email</label>
+          <input type="email" id="signUpEmail" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="signUpPassword">Password</label>
+          <input type="password" id="signUpPassword" name="password" required minlength="8">
+        </div>
+        <div class="form-group">
+          <label for="signUpConfirmPassword">Confirm Password</label>
+          <input type="password" id="signUpConfirmPassword" name="confirmPassword" required minlength="8">
+        </div>
+        <button type="submit" class="auth-submit">Create Account</button>
+      </form>
+      <p class="auth-switch">Already have an account? <button type="button" class="switch-to-signin">Sign In</button></p>
+    </div>
+  </div>
+  
+  <main>
+    <section class="hero experiences-hero">
+      <h1>Discover unique experiences</h1>
+      <form class="search-form" id="experienceSearchForm" role="search" aria-label="Search experiences">
+        <div class="field">
+          <label for="location" class="sr-only">Where do you want to explore?</label>
+          <input type="text" id="location" name="location" placeholder="Where do you want to explore?" required aria-required="true">
+        </div>
+
+        <div class="field date-picker-group">
+          <label for="date" class="sr-only">Date</label>
+          <input type="text" id="date" name="date" placeholder="Choose Date" readonly required>
+        </div>
+
+        <div class="field experience-type">
+          <label class="sr-only" for="category">Category</label>
+          <select id="category" name="category">
+            <option value="all">All Categories</option>
+            <option value="adventure">Adventure</option>
+            <option value="culture">Culture & History</option>
+            <option value="food">Food & Drink</option>
+            <option value="nature">Nature & Wildlife</option>
+          </select>
+        </div>
+
+        <button type="submit" class="search-btn">Search Experiences</button>
+      </form>
+    </section>
+
+    <section class="featured-section">
+      <h2>Popular Experiences</h2>
+      <div class="card-list">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1533227268428-f9b3cb150dfd" alt="Cooking class">
+          <div class="card-content">
+            <div class="card-title">Local Cooking Classes</div>
+            <div class="card-details">From $79/person · 4.9★ (500+ reviews)</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b" alt="Mountain hiking">
+          <div class="card-content">
+            <div class="card-title">Guided Mountain Hikes</div>
+            <div class="card-details">From $49/person · Adventure</div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785" alt="City tour">
+          <div class="card-content">
+            <div class="card-title">City Walking Tours</div>
+            <div class="card-details">From $29/person · Cultural</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About BookItNow</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How it Works</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Cancellation Options</a></li>
+          <li><a href="#">Safety Information</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BookItNow. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" type="module"></script>
+</body>
+</html>

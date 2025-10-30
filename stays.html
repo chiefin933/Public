@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stays - BookItNow</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="site-header"></div>
+  
+  <main>
+    <section class="hero stays-hero">
+      <h1>Find your perfect stay</h1>
+      <form class="search-form" id="staysSearchForm" role="search" aria-label="Search accommodations">
+        <div class="field">
+          <label for="destination" class="sr-only">Where are you going?</label>
+          <input type="text" id="destination" name="destination" placeholder="Where are you going?" required aria-required="true">
+        </div>
+
+        <div class="field date-picker-group">
+          <label for="checkin" class="sr-only">Check-in date</label>
+          <input type="text" id="checkin" name="checkin" placeholder="Check-in" readonly required>
+          <label for="checkout" class="sr-only">Check-out date</label>
+          <input type="text" id="checkout" name="checkout" placeholder="Check-out" readonly required>
+        </div>
+
+        <div class="field guests-group">
+          <label class="sr-only" for="rooms">Rooms and Guests</label>
+          <select id="rooms" name="rooms">
+            <option value="1">1 Room</option>
+            <option value="2">2 Rooms</option>
+            <option value="3">3 Rooms</option>
+          </select>
+          <select id="guests" name="guests">
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+          </select>
+        </div>
+
+        <button type="submit" class="search-btn">Search Stays</button>
+      </form>
+    </section>
+
+    <section class="featured-section">
+      <h2>Available Properties</h2>
+      <div id="propertyFilters" class="filters">
+        <select id="propertyType">
+          <option value="">All Types</option>
+          <option value="HOUSE">Houses</option>
+          <option value="APARTMENT">Apartments</option>
+          <option value="VILLA">Villas</option>
+          <option value="HOTEL_ROOM">Hotel Rooms</option>
+        </select>
+        <div class="price-range">
+          <input type="number" id="minPrice" placeholder="Min Price">
+          <input type="number" id="maxPrice" placeholder="Max Price">
+        </div>
+      </div>
+      <div class="card-list">
+        <div id="propertyList" class="property-grid">
+          <!-- Properties will be loaded here dynamically -->
+          <div class="loading">Loading properties...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="include-fragments.js"></script>
+    <script src="js/api.js" type="module"></script>
+    <script src="js/auth.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>

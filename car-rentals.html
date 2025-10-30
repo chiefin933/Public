@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rentals - BookItNow</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700|Lato:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="site-header"></div>
+  
+  <main>
+    <section class="hero cars-hero">
+      <h1>Rent your perfect car</h1>
+      <form class="search-form" id="carSearchForm" role="search" aria-label="Search car rentals">
+        <div class="field">
+          <label for="pickup-location" class="sr-only">Pickup Location</label>
+          <input type="text" id="pickup-location" name="pickup-location" placeholder="Pickup Location" required aria-required="true">
+        </div>
+
+        <div class="field date-picker-group">
+          <label for="pickup-date" class="sr-only">Pickup date</label>
+          <input type="text" id="pickup-date" name="pickup-date" placeholder="Pickup Date" readonly required>
+          <label for="return-date" class="sr-only">Return date</label>
+          <input type="text" id="return-date" name="return-date" placeholder="Return Date" readonly required>
+        </div>
+
+        <div class="field car-options">
+          <label class="sr-only" for="car-type">Car Type</label>
+          <select id="car-type" name="car-type">
+            <option value="economy">Economy</option>
+            <option value="compact">Compact</option>
+            <option value="suv">SUV</option>
+            <option value="luxury">Luxury</option>
+          </select>
+        </div>
+
+        <button type="submit" class="search-btn">Search Cars</button>
+      </form>
+    </section>
+
+    <section class="featured-section">
+      <h2>Available Vehicles</h2>
+      <div id="vehicleFilters" class="filters">
+        <select id="vehicleType">
+          <option value="">All Types</option>
+          <option value="ECONOMY">Economy</option>
+          <option value="SUV">SUV</option>
+          <option value="LUXURY">Luxury</option>
+          <option value="VAN">Van</option>
+        </select>
+        <div class="price-range">
+          <input type="number" id="minPrice" placeholder="Min Price">
+          <input type="number" id="maxPrice" placeholder="Max Price">
+        </div>
+      </div>
+      <div class="card-list">
+        <div id="vehicleList" class="vehicle-grid">
+          <!-- Vehicles will be loaded here dynamically -->
+          <div class="loading">Loading vehicles...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="include-fragments.js"></script>
+  <script src="js/api.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+  <script src="script.js" type="module"></script>
+</body>
+</html>
